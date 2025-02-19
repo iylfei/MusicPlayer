@@ -563,7 +563,7 @@ void OnlineMusicWidget::scrollText()
 //添加到播放列表
 void OnlineMusicWidget::addToPlaylist(const QString &songPath)
 {
-    // 使用match函数搜索UserRole中的数据
+    // 检测重复添加
     QModelIndexList matches = musicModel->match(
         musicModel->index(0, 0),  // 从第一行第一列开始搜索
         Qt::UserRole,             // 搜索UserRole数据
@@ -577,6 +577,12 @@ void OnlineMusicWidget::addToPlaylist(const QString &songPath)
         QFileInfo fileinfo(songPath);
         item->setText(fileinfo.fileName());
         item->setData(songPath, Qt::UserRole);
+        musicModel->insertRow(0, item);
+    }
+    else {
+        int oldRow = matches.first().row();
+        QStandardItem *item = musicModel->takeItem(oldRow);
+        musicModel->removeRow(oldRow);
         musicModel->insertRow(0, item);
     }
 }
