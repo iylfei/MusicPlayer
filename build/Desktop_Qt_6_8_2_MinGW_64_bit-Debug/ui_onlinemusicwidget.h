@@ -353,10 +353,10 @@ public:
 
         volumeLayout->addWidget(volumeSlider);
 
-        layoutWidget2->raise();
+        layoutWidget3->raise();
         authorLabel->raise();
-        layoutWidget2->raise();
-        layoutWidget2->raise();
+        layoutWidget3->raise();
+        layoutWidget3->raise();
         titleLabel->raise();
         localMusicListButton = new QPushButton(OnlineMusicWidget);
         localMusicListButton->setObjectName("localMusicListButton");
@@ -382,7 +382,7 @@ public:
         musicList->setFont(font7);
         musicList->setStyleSheet(QString::fromUtf8("color:black"));
         playerGroup->raise();
-        layoutWidget2->raise();
+        layoutWidget3->raise();
         searchGroup->raise();
         lyric->raise();
         scrollArea->raise();
@@ -415,6 +415,9 @@ public:
         playButton->setText(QString());
         nextButton->setText(QString());
         volumeButton->setText(QString());
+#if QT_CONFIG(tooltip)
+        localMusicListButton->setToolTip(QCoreApplication::translate("OnlineMusicWidget", "<html><head/><body><p>\346\234\254\345\234\260\346\255\214\346\233\262</p><p><br/></p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
         localMusicListButton->setText(QString());
     } // retranslateUi
 

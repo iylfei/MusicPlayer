@@ -26,7 +26,7 @@ class Ui_Dialog
 {
 public:
     QDialogButtonBox *buttonBox;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QTreeWidget *treeWidget;
     QStackedWidget *stackedWidget;
@@ -43,18 +43,19 @@ public:
         buttonBox->setGeometry(QRect(320, 460, 341, 32));
         buttonBox->setOrientation(Qt::Orientation::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
-        widget = new QWidget(Dialog);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(0, 0, 681, 461));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(Dialog);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(0, 0, 681, 461));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
+        horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        treeWidget = new QTreeWidget(widget);
+        treeWidget = new QTreeWidget(layoutWidget);
         QFont font;
         font.setFamilies({QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221")});
         font.setPointSize(20);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
-        __qtreewidgetitem->setTextAlignment(0, Qt::AlignCenter);
+        __qtreewidgetitem->setTextAlignment(0, Qt::AlignLeading|Qt::AlignVCenter);
         __qtreewidgetitem->setFont(0, font);
         treeWidget->setHeaderItem(__qtreewidgetitem);
         QFont font1;
@@ -73,7 +74,7 @@ public:
 
         horizontalLayout->addWidget(treeWidget);
 
-        stackedWidget = new QStackedWidget(widget);
+        stackedWidget = new QStackedWidget(layoutWidget);
         stackedWidget->setObjectName("stackedWidget");
         page = new QWidget();
         page->setObjectName("page");
@@ -90,6 +91,9 @@ public:
         retranslateUi(Dialog);
         QObject::connect(buttonBox, &QDialogButtonBox::accepted, Dialog, qOverload<>(&QDialog::accept));
         QObject::connect(buttonBox, &QDialogButtonBox::rejected, Dialog, qOverload<>(&QDialog::reject));
+
+        stackedWidget->setCurrentIndex(1);
+
 
         QMetaObject::connectSlotsByName(Dialog);
     } // setupUi

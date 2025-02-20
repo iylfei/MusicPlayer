@@ -29,7 +29,7 @@
     <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -39,6 +39,9 @@
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,6">
+    <property name="spacing">
+     <number>0</number>
+    </property>
     <item>
      <widget class="QTreeWidget" name="treeWidget">
       <property name="minimumSize">
@@ -73,7 +76,7 @@
         </font>
        </property>
        <property name="textAlignment">
-        <set>AlignCenter</set>
+        <set>AlignLeading|AlignVCenter</set>
        </property>
       </column>
       <item>
@@ -102,6 +105,9 @@
     </item>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
       <widget class="QWidget" name="page"/>
       <widget class="QWidget" name="page_2"/>
      </widget>

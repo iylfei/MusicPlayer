@@ -27,6 +27,7 @@
 #include <QStandardPaths>
 #include <QDialog>
 #include <QStandardItemModel>
+#include "settings.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -79,6 +80,8 @@ private slots:
 
     void addToPlaylist(const QString &songPath);
 
+    void on_optionsButton_clicked();
+
 private:
     Ui::OnlineMusicWidget *ui;
 
@@ -104,6 +107,7 @@ private:
     int textWidth = 0;           // 文本总像素宽度
     bool needScroll = false;  // 是否需要滚动
     QStandardItemModel *musicModel;
+    Settings *settingsDialog;
 
 protected:
     //音乐下载和播放

@@ -11,15 +11,15 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     onlinemusicwidget.cpp \
-    options.cpp
+    settings.cpp
 
 HEADERS += \
-    Options.h \
-    onlinemusicwidget.h
+    onlinemusicwidget.h \
+    settings.h
 
 FORMS += \
-    Options.ui \
-    onlinemusicwidget.ui
+    onlinemusicwidget.ui \
+    settings.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

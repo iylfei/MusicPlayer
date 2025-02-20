@@ -31,19 +31,19 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_tag_ZN7optionsE_t {};
+struct qt_meta_tag_ZN7OptionsE_t {};
 } // unnamed namespace
 
 
 #ifdef QT_MOC_HAS_STRINGDATA
-static constexpr auto qt_meta_stringdata_ZN7optionsE = QtMocHelpers::stringData(
-    "options"
+static constexpr auto qt_meta_stringdata_ZN7OptionsE = QtMocHelpers::stringData(
+    "Options"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
 #endif // !QT_MOC_HAS_STRINGDATA
 
-Q_CONSTINIT static const uint qt_meta_data_ZN7optionsE[] = {
+Q_CONSTINIT static const uint qt_meta_data_ZN7OptionsE[] = {
 
  // content:
       12,       // revision
@@ -59,44 +59,44 @@ Q_CONSTINIT static const uint qt_meta_data_ZN7optionsE[] = {
        0        // eod
 };
 
-Q_CONSTINIT const QMetaObject options::staticMetaObject = { {
-    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_ZN7optionsE.offsetsAndSizes,
-    qt_meta_data_ZN7optionsE,
+Q_CONSTINIT const QMetaObject Options::staticMetaObject = { {
+    QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
+    qt_meta_stringdata_ZN7OptionsE.offsetsAndSizes,
+    qt_meta_data_ZN7OptionsE,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_tag_ZN7optionsE_t,
+    qt_incomplete_metaTypeArray<qt_meta_tag_ZN7OptionsE_t,
         // Q_OBJECT / Q_GADGET
-        QtPrivate::TypeAndForceComplete<options, std::true_type>
+        QtPrivate::TypeAndForceComplete<Options, std::true_type>
     >,
     nullptr
 } };
 
-void options::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Options::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto *_t = static_cast<options *>(_o);
+    auto *_t = static_cast<Options *>(_o);
     (void)_t;
     (void)_c;
     (void)_id;
     (void)_a;
 }
 
-const QMetaObject *options::metaObject() const
+const QMetaObject *Options::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *options::qt_metacast(const char *_clname)
+void *Options::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_ZN7optionsE.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_ZN7OptionsE.stringdata0))
         return static_cast<void*>(this);
-    return QWidget::qt_metacast(_clname);
+    return QDialog::qt_metacast(_clname);
 }
 
-int options::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Options::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QWidget::qt_metacall(_c, _id, _a);
+    _id = QDialog::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP

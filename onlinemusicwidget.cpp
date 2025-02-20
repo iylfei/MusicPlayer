@@ -16,6 +16,10 @@ OnlineMusicWidget::OnlineMusicWidget(QWidget *parent)
     player = new QMediaPlayer(this);
     audioOutput = new QAudioOutput(this);
     player->setAudioOutput(audioOutput);
+
+    //初始化设置窗口
+    settingsDialog = nullptr;
+
     //设置初始音量
     ui->volumeSlider->setValue(30);
     audioOutput->setVolume(0.3);
@@ -649,4 +653,12 @@ void OnlineMusicWidget::on_prevButton_clicked()
     }
 }
 
+//打开设置界面
+void OnlineMusicWidget::on_optionsButton_clicked()
+{
+    if(!settingsDialog){
+        settingsDialog = new Settings(this);
+    }
+    settingsDialog->show();
+}
 
