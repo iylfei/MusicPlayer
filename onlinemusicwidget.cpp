@@ -590,13 +590,63 @@ void OnlineMusicWidget::addToPlaylist(const QString &songPath)
 //播放列表中的下一首
 void OnlineMusicWidget::on_nextButton_clicked()
 {
+    //获取当前播放歌曲路径
+    QString currentPath = player->source().toLocalFile();
+    QModelIndexList matches = musicModel->match(
+        musicModel->index(0,0),
+        Qt::UserRole,
+        currentPath,
+        1,
+        Qt::MatchExactly
+        );
+    if(!matches.empty()){
+        //获取当前播放歌曲位置
+        int currentRow = matches.first().row();
+        int nextRow = currentRow + 1;
+        //如果是最后一首歌，切换到第一首
+        if(nextRow >= musicModel->rowCount()){
+            nextRow = 0;
+        }
+        QStandardItem *nextItem = musicModel->item(nextRow);
+        if(nextItem) {
+            QString nextPath = nextItem->data(Qt::UserRole).toString();
+            player->setSource(QUrl::fromLocalFile(nextPath));
+            player->play();
 
+            ui->playButton->setIcon(QIcon(":/images/prefix1/images/pause.png"));
+            isplaying = true;
+        }
+    }
 }
 
 //播放列表中的上一首
 void OnlineMusicWidget::on_prevButton_clicked()
 {
+    QString currentPath = player->source().toLocalFile();
+    QModelIndexList matches = musicModel->match(
+        musicModel->index(0,0),
+        Qt::UserRole,
+        currentPath,
+        1,
+        Qt::MatchExactly
+        );
+    if(!matches.empty()){
+        int currentRow = matches.first().row();
+        int prevRow = currentRow - 1;
+        //如果是第一首歌，切换到末尾
+        if(prevRow < 0){
+            prevRow = musicModel->rowCount() - 1;
+        }
+        QStandardItem *prevItem = musicModel->item(prevRow);
+        if(prevItem){
+            QString prevPath = prevItem->data(Qt::UserRole).toString();
+            player->setSource(QUrl::fromLocalFile(prevPath));
+            player->play();
 
+            ui->playButton->setIcon(QIcon(":/images/prefix1/images/pause.png"));
+            isplaying = true;
+        }
+    }
 }
 
 
