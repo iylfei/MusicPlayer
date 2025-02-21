@@ -20,7 +20,9 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -29,19 +31,24 @@ class Ui_Settings
 {
 public:
     QDialogButtonBox *buttonBox;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QListWidget *settingList;
     QStackedWidget *settingStacked;
     QWidget *performance;
-    QLabel *label_2;
-    QLabel *label;
-    QFontComboBox *fontComboBox;
-    QComboBox *comboBox;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
+    QVBoxLayout *performanceLayout;
     QHBoxLayout *backgroundLayout;
     QLabel *backgroundlabel;
     QPushButton *backgroundButton;
+    QHBoxLayout *fontFamilyLayout;
+    QLabel *fontFamilyLabel;
+    QLabel *previewLabel;
+    QFontComboBox *fontComboBox;
+    QHBoxLayout *fontsizeLayout;
+    QLabel *sizelabel;
+    QSpacerItem *horizontalSpacer;
+    QComboBox *sizecomboBox;
     QWidget *page_2;
 
     void setupUi(QDialog *Settings)
@@ -54,13 +61,13 @@ public:
         buttonBox->setGeometry(QRect(290, 490, 341, 32));
         buttonBox->setOrientation(Qt::Orientation::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
-        widget = new QWidget(Settings);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(0, 0, 661, 471));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(Settings);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(0, 0, 661, 471));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        settingList = new QListWidget(widget);
+        settingList = new QListWidget(layoutWidget);
         QFont font;
         font.setFamilies({QString::fromUtf8("\351\273\221\344\275\223")});
         font.setPointSize(26);
@@ -77,42 +84,89 @@ public:
 
         horizontalLayout->addWidget(settingList);
 
-        settingStacked = new QStackedWidget(widget);
+        settingStacked = new QStackedWidget(layoutWidget);
         settingStacked->setObjectName("settingStacked");
         performance = new QWidget();
         performance->setObjectName("performance");
-        label_2 = new QLabel(performance);
-        label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(30, 110, 151, 61));
+        layoutWidget1 = new QWidget(performance);
+        layoutWidget1->setObjectName("layoutWidget1");
+        layoutWidget1->setGeometry(QRect(30, 30, 431, 411));
+        performanceLayout = new QVBoxLayout(layoutWidget1);
+        performanceLayout->setObjectName("performanceLayout");
+        performanceLayout->setContentsMargins(0, 0, 0, 0);
+        backgroundLayout = new QHBoxLayout();
+        backgroundLayout->setObjectName("backgroundLayout");
+        backgroundlabel = new QLabel(layoutWidget1);
+        backgroundlabel->setObjectName("backgroundlabel");
         QFont font1;
         font1.setFamilies({QString::fromUtf8("\351\273\221\344\275\223")});
-        font1.setPointSize(14);
-        label_2->setFont(font1);
-        label = new QLabel(performance);
-        label->setObjectName("label");
-        label->setGeometry(QRect(30, 180, 69, 19));
-        fontComboBox = new QFontComboBox(performance);
-        fontComboBox->setObjectName("fontComboBox");
-        fontComboBox->setGeometry(QRect(100, 130, 213, 25));
-        comboBox = new QComboBox(performance);
-        comboBox->setObjectName("comboBox");
-        comboBox->setGeometry(QRect(100, 180, 83, 25));
-        widget1 = new QWidget(performance);
-        widget1->setObjectName("widget1");
-        widget1->setGeometry(QRect(30, 30, 150, 30));
-        backgroundLayout = new QHBoxLayout(widget1);
-        backgroundLayout->setObjectName("backgroundLayout");
-        backgroundLayout->setContentsMargins(0, 0, 0, 0);
-        backgroundlabel = new QLabel(widget1);
-        backgroundlabel->setObjectName("backgroundlabel");
+        font1.setPointSize(18);
         backgroundlabel->setFont(font1);
+        backgroundlabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         backgroundLayout->addWidget(backgroundlabel);
 
-        backgroundButton = new QPushButton(widget1);
+        backgroundButton = new QPushButton(layoutWidget1);
         backgroundButton->setObjectName("backgroundButton");
 
         backgroundLayout->addWidget(backgroundButton);
+
+
+        performanceLayout->addLayout(backgroundLayout);
+
+        fontFamilyLayout = new QHBoxLayout();
+        fontFamilyLayout->setObjectName("fontFamilyLayout");
+        fontFamilyLabel = new QLabel(layoutWidget1);
+        fontFamilyLabel->setObjectName("fontFamilyLabel");
+        fontFamilyLabel->setFont(font1);
+        fontFamilyLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        fontFamilyLayout->addWidget(fontFamilyLabel);
+
+        previewLabel = new QLabel(layoutWidget1);
+        previewLabel->setObjectName("previewLabel");
+
+        fontFamilyLayout->addWidget(previewLabel);
+
+        fontComboBox = new QFontComboBox(layoutWidget1);
+        fontComboBox->setObjectName("fontComboBox");
+        QFont font2;
+        font2.setFamilies({QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221")});
+        fontComboBox->setCurrentFont(font2);
+
+        fontFamilyLayout->addWidget(fontComboBox);
+
+        fontFamilyLayout->setStretch(0, 3);
+        fontFamilyLayout->setStretch(1, 1);
+        fontFamilyLayout->setStretch(2, 3);
+
+        performanceLayout->addLayout(fontFamilyLayout);
+
+        fontsizeLayout = new QHBoxLayout();
+        fontsizeLayout->setObjectName("fontsizeLayout");
+        sizelabel = new QLabel(layoutWidget1);
+        sizelabel->setObjectName("sizelabel");
+        QFont font3;
+        font3.setPointSize(16);
+        sizelabel->setFont(font3);
+        sizelabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        fontsizeLayout->addWidget(sizelabel);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        fontsizeLayout->addItem(horizontalSpacer);
+
+        sizecomboBox = new QComboBox(layoutWidget1);
+        sizecomboBox->setObjectName("sizecomboBox");
+
+        fontsizeLayout->addWidget(sizecomboBox);
+
+        fontsizeLayout->setStretch(0, 3);
+        fontsizeLayout->setStretch(1, 3);
+        fontsizeLayout->setStretch(2, 2);
+
+        performanceLayout->addLayout(fontsizeLayout);
 
         settingStacked->addWidget(performance);
         page_2 = new QWidget();
@@ -141,10 +195,11 @@ public:
         ___qlistwidgetitem->setText(QCoreApplication::translate("Settings", "\345\244\226\350\247\202", nullptr));
         settingList->setSortingEnabled(__sortingEnabled);
 
-        label_2->setText(QCoreApplication::translate("Settings", "\345\255\227\344\275\223", nullptr));
-        label->setText(QCoreApplication::translate("Settings", "\345\244\247\345\260\217", nullptr));
-        backgroundlabel->setText(QCoreApplication::translate("Settings", "\350\203\214\346\231\257", nullptr));
+        backgroundlabel->setText(QCoreApplication::translate("Settings", " \350\203\214\346\231\257", nullptr));
         backgroundButton->setText(QCoreApplication::translate("Settings", "\350\207\252\345\256\232\344\271\211\350\203\214\346\231\257", nullptr));
+        fontFamilyLabel->setText(QCoreApplication::translate("Settings", "\345\255\227\344\275\223", nullptr));
+        previewLabel->setText(QString());
+        sizelabel->setText(QCoreApplication::translate("Settings", " \346\226\207\345\255\227\345\244\247\345\260\217", nullptr));
     } // retranslateUi
 
 };

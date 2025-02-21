@@ -2,6 +2,11 @@
 #define SETTINGS_H
 
 #include <QDialog>
+#include <QSettings>
+#include <QApplication>
+#include <QFileDialog>
+
+#define EXIT_CODE_REBOOT 1000
 
 namespace Ui {
 class Settings;
@@ -15,8 +20,21 @@ public:
     explicit Settings(QWidget *parent = nullptr);
     ~Settings();
 
+private slots:
+    void on_fontComboBox_currentFontChanged(const QFont &f);
+
+    void on_backgroundButton_clicked();
+
+    void changeFontSize();
+
+
+
 private:
     Ui::Settings *ui;
+
+signals:
+    void backgroundChanged();
+
 };
 
 #endif // SETTINGS_H

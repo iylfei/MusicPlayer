@@ -23,8 +23,10 @@ OnlineMusicWidget::OnlineMusicWidget(QWidget *parent)
     //设置初始音量
     ui->volumeSlider->setValue(30);
     audioOutput->setVolume(0.3);
+
     //总时长
     connect(player, &QMediaPlayer::durationChanged, this, &OnlineMusicWidget::updateDuration);
+
     //初始化进度条
     ui->progressSlider->setMinimum(0);
     ui->progressSlider->setValue(0);
@@ -34,6 +36,12 @@ OnlineMusicWidget::OnlineMusicWidget(QWidget *parent)
     connect(ui->progressSlider, &QSlider::sliderPressed, this, &OnlineMusicWidget::onSliderPressed);
     connect(ui->progressSlider, &QSlider::sliderReleased, this, &OnlineMusicWidget::onSliderReleased);
     connect(ui->progressSlider, &QSlider::valueChanged, this, &OnlineMusicWidget::onSliderValueChanged);
+
+    //更新背景
+    connect(settingsDialog, &Settings::backgroundChanged, this, [this]() {
+        update();
+        repaint();
+    });
 
     //安装事件过滤器
     qApp->installEventFilter(this);
@@ -71,10 +79,20 @@ OnlineMusicWidget::~OnlineMusicWidget()
 void OnlineMusicWidget::paintEvent(QPaintEvent *paint)
 {
     QPainter painter(this);
-    //绘制背景
-    painter.drawPixmap(0,0,width(),height(),QPixmap(":/images/prefix1/images/2.jpg"));
-}
 
+    // 每次绘制时从设置中读取最新的背景图片路径
+    QSettings settings;
+    QString backgroundPath = settings.value("app/background", ":/images/prefix1/images/2.jpg").toString();
+
+    // 绘制背景
+    QPixmap backgroundPixmap(backgroundPath);
+    if (!backgroundPixmap.isNull()) {
+        painter.drawPixmap(0, 0, width(), height(), backgroundPixmap);
+    } else {
+        // 如果图片无效，使用默认背景
+        painter.drawPixmap(0, 0, width(), height(), QPixmap(":/images/prefix1/images/2.jpg"));
+    }
+}
 void OnlineMusicWidget::on_closeButton_clicked()
 {
     close();

@@ -37,7 +37,13 @@ struct qt_meta_tag_ZN8SettingsE_t {};
 
 #ifdef QT_MOC_HAS_STRINGDATA
 static constexpr auto qt_meta_stringdata_ZN8SettingsE = QtMocHelpers::stringData(
-    "Settings"
+    "Settings",
+    "backgroundChanged",
+    "",
+    "on_fontComboBox_currentFontChanged",
+    "f",
+    "on_backgroundButton_clicked",
+    "changeFontSize"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -49,12 +55,28 @@ Q_CONSTINIT static const uint qt_meta_data_ZN8SettingsE[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    0,   38,    2, 0x06,    1 /* Public */,
+
+ // slots: name, argc, parameters, tag, flags, initial metatype offsets
+       3,    1,   39,    2, 0x08,    2 /* Private */,
+       5,    0,   42,    2, 0x08,    4 /* Private */,
+       6,    0,   43,    2, 0x08,    5 /* Private */,
+
+ // signals: parameters
+    QMetaType::Void,
+
+ // slots: parameters
+    QMetaType::Void, QMetaType::QFont,    4,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -67,7 +89,16 @@ Q_CONSTINIT const QMetaObject Settings::staticMetaObject = { {
     nullptr,
     qt_incomplete_metaTypeArray<qt_meta_tag_ZN8SettingsE_t,
         // Q_OBJECT / Q_GADGET
-        QtPrivate::TypeAndForceComplete<Settings, std::true_type>
+        QtPrivate::TypeAndForceComplete<Settings, std::true_type>,
+        // method 'backgroundChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_fontComboBox_currentFontChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QFont &, std::false_type>,
+        // method 'on_backgroundButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'changeFontSize'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -75,10 +106,25 @@ Q_CONSTINIT const QMetaObject Settings::staticMetaObject = { {
 void Settings::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<Settings *>(_o);
-    (void)_t;
-    (void)_c;
-    (void)_id;
-    (void)_a;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->backgroundChanged(); break;
+        case 1: _t->on_fontComboBox_currentFontChanged((*reinterpret_cast< std::add_pointer_t<QFont>>(_a[1]))); break;
+        case 2: _t->on_backgroundButton_clicked(); break;
+        case 3: _t->changeFontSize(); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        {
+            using _q_method_type = void (Settings::*)();
+            if (_q_method_type _q_method = &Settings::backgroundChanged; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
+                *result = 0;
+                return;
+            }
+        }
+    }
 }
 
 const QMetaObject *Settings::metaObject() const
@@ -97,6 +143,24 @@ void *Settings::qt_metacast(const char *_clname)
 int Settings::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 4)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 4;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 4)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 4;
+    }
     return _id;
+}
+
+// SIGNAL 0
+void Settings::backgroundChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP
