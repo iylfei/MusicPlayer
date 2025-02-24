@@ -62,6 +62,7 @@ public:
     QTextEdit *textEdit;
     QTextEdit *textEdit_2;
     QListView *musicList;
+    QLabel *musicListLabel;
 
     void setupUi(QWidget *OnlineMusicWidget)
     {
@@ -76,10 +77,6 @@ public:
         label = new QLabel(searchGroup);
         label->setObjectName("label");
         label->setGeometry(QRect(30, 20, 141, 41));
-        QFont font;
-        font.setFamilies({QString::fromUtf8("\346\226\260\345\256\213\344\275\223")});
-        font.setPointSize(16);
-        label->setFont(font);
         label->setStyleSheet(QString::fromUtf8("color:white;\n"
 "border:1px solid white;\n"
 "border-radius:5px;\n"
@@ -87,18 +84,14 @@ public:
         lineEdit = new QLineEdit(searchGroup);
         lineEdit->setObjectName("lineEdit");
         lineEdit->setGeometry(QRect(190, 20, 321, 41));
-        QFont font1;
-        font1.setPointSize(12);
-        lineEdit->setFont(font1);
+        QFont font;
+        font.setPointSize(12);
+        lineEdit->setFont(font);
         searchButton = new QPushButton(searchGroup);
         searchButton->setObjectName("searchButton");
         searchButton->setGeometry(QRect(530, 20, 71, 41));
         searchButton->setMinimumSize(QSize(71, 41));
         searchButton->setMaximumSize(QSize(71, 41));
-        QFont font2;
-        font2.setFamilies({QString::fromUtf8("\346\226\260\345\256\213\344\275\223")});
-        font2.setPointSize(14);
-        searchButton->setFont(font2);
         searchButton->setStyleSheet(QString::fromUtf8("QPushButton#searchButton\n"
 "{\n"
 "	background:transparent;\n"
@@ -120,7 +113,7 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         optionsButton = new QPushButton(layoutWidget);
         optionsButton->setObjectName("optionsButton");
-        optionsButton->setFont(font1);
+        optionsButton->setFont(font);
         optionsButton->setStyleSheet(QString::fromUtf8("background-color:transparent;\n"
 "border:none;"));
         QIcon icon;
@@ -135,10 +128,10 @@ public:
         minButton->setMinimumSize(QSize(45, 38));
         minButton->setMaximumSize(QSize(45, 38));
         minButton->setBaseSize(QSize(0, 0));
-        QFont font3;
-        font3.setPointSize(10);
-        font3.setBold(false);
-        minButton->setFont(font3);
+        QFont font1;
+        font1.setPointSize(10);
+        font1.setBold(false);
+        minButton->setFont(font1);
         minButton->setStyleSheet(QString::fromUtf8("QPushButton#minButton\n"
 "{\n"
 "	border: none;\n"
@@ -159,10 +152,10 @@ public:
         closeButton->setObjectName("closeButton");
         closeButton->setMinimumSize(QSize(44, 38));
         closeButton->setMaximumSize(QSize(44, 38));
-        QFont font4;
-        font4.setPointSize(14);
-        font4.setBold(false);
-        closeButton->setFont(font4);
+        QFont font2;
+        font2.setPointSize(14);
+        font2.setBold(false);
+        closeButton->setFont(font2);
         closeButton->setStyleSheet(QString::fromUtf8("QPushButton#closeButton\n"
 "{\n"
 "	border: none;\n"
@@ -203,10 +196,10 @@ public:
         titleLabel = new QLabel(playerGroup);
         titleLabel->setObjectName("titleLabel");
         titleLabel->setGeometry(QRect(10, 10, 201, 31));
-        QFont font5;
-        font5.setFamilies({QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221")});
-        font5.setPointSize(14);
-        titleLabel->setFont(font5);
+        QFont font3;
+        font3.setFamilies({QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221")});
+        font3.setPointSize(14);
+        titleLabel->setFont(font3);
         titleLabel->setStyleSheet(QString::fromUtf8(""));
         layoutWidget1 = new QWidget(playerGroup);
         layoutWidget1->setObjectName("layoutWidget1");
@@ -258,10 +251,10 @@ public:
         authorLabel = new QLabel(playerGroup);
         authorLabel->setObjectName("authorLabel");
         authorLabel->setGeometry(QRect(10, 50, 111, 16));
-        QFont font6;
-        font6.setFamilies({QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221")});
-        font6.setPointSize(11);
-        authorLabel->setFont(font6);
+        QFont font4;
+        font4.setFamilies({QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221")});
+        font4.setPointSize(11);
+        authorLabel->setFont(font4);
         authorLabel->setStyleSheet(QString::fromUtf8("color:white;"));
         layoutWidget2 = new QWidget(playerGroup);
         layoutWidget2->setObjectName("layoutWidget2");
@@ -314,7 +307,7 @@ public:
         volumeLayout->setContentsMargins(0, 0, 0, 0);
         volumeButton = new QPushButton(layoutWidget3);
         volumeButton->setObjectName("volumeButton");
-        volumeButton->setFont(font1);
+        volumeButton->setFont(font);
         volumeButton->setStyleSheet(QString::fromUtf8("background-color:transparent;\n"
 "border:none;"));
         QIcon icon4;
@@ -353,10 +346,10 @@ public:
 
         volumeLayout->addWidget(volumeSlider);
 
-        layoutWidget3->raise();
+        layoutWidget1->raise();
         authorLabel->raise();
-        layoutWidget3->raise();
-        layoutWidget3->raise();
+        layoutWidget1->raise();
+        layoutWidget1->raise();
         titleLabel->raise();
         localMusicListButton = new QPushButton(OnlineMusicWidget);
         localMusicListButton->setObjectName("localMusicListButton");
@@ -376,19 +369,25 @@ public:
         musicList = new QListView(OnlineMusicWidget);
         musicList->setObjectName("musicList");
         musicList->setGeometry(QRect(40, 130, 271, 361));
-        QFont font7;
-        font7.setFamilies({QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221")});
-        font7.setPointSize(12);
-        musicList->setFont(font7);
+        QFont font5;
+        font5.setFamilies({QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221")});
+        font5.setPointSize(12);
+        musicList->setFont(font5);
         musicList->setStyleSheet(QString::fromUtf8("color:black"));
+        musicListLabel = new QLabel(OnlineMusicWidget);
+        musicListLabel->setObjectName("musicListLabel");
+        musicListLabel->setGeometry(QRect(50, 90, 141, 41));
+        musicListLabel->setStyleSheet(QString::fromUtf8("color:white;\n"
+""));
         playerGroup->raise();
-        layoutWidget3->raise();
+        layoutWidget1->raise();
         searchGroup->raise();
         lyric->raise();
         scrollArea->raise();
         localMusicListButton->raise();
         textEdit->raise();
         textEdit_2->raise();
+        musicListLabel->raise();
         musicList->raise();
 
         retranslateUi(OnlineMusicWidget);
@@ -419,6 +418,7 @@ public:
         localMusicListButton->setToolTip(QCoreApplication::translate("OnlineMusicWidget", "<html><head/><body><p>\346\234\254\345\234\260\346\255\214\346\233\262</p><p><br/></p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
         localMusicListButton->setText(QString());
+        musicListLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "\346\222\255\346\224\276\345\210\227\350\241\250", nullptr));
     } // retranslateUi
 
 };

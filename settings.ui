@@ -10,8 +10,20 @@
     <height>544</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>661</width>
+    <height>544</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>661</width>
+    <height>544</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>设置</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
@@ -35,10 +47,10 @@
      <x>0</x>
      <y>0</y>
      <width>661</width>
-     <height>471</height>
+     <height>481</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,5">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0">
     <item>
      <widget class="QListWidget" name="settingList">
       <property name="styleSheet">
@@ -69,21 +81,45 @@
     </item>
     <item>
      <widget class="QStackedWidget" name="settingStacked">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
       <widget class="QWidget" name="performance">
+       <property name="minimumSize">
+        <size>
+         <width>543</width>
+         <height>469</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>543</width>
+         <height>469</height>
+        </size>
+       </property>
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>30</y>
-          <width>431</width>
-          <height>411</height>
+          <x>20</x>
+          <y>20</y>
+          <width>441</width>
+          <height>441</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="performanceLayout">
+        <layout class="QVBoxLayout" name="performanceLayout" stretch="1,1,1,1">
          <item>
           <layout class="QHBoxLayout" name="backgroundLayout">
+           <property name="spacing">
+            <number>5</number>
+           </property>
            <item>
             <widget class="QLabel" name="backgroundlabel">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="font">
               <font>
                <family>黑体</family>
@@ -91,7 +127,7 @@
               </font>
              </property>
              <property name="text">
-              <string> 背景</string>
+              <string>背景</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -100,6 +136,12 @@
            </item>
            <item>
             <widget class="QPushButton" name="backgroundButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="text">
               <string>自定义背景</string>
              </property>
@@ -108,9 +150,18 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="fontFamilyLayout" stretch="3,1,3">
+          <layout class="QHBoxLayout" name="fontFamilyLayout" stretch="3,0">
+           <property name="spacing">
+            <number>5</number>
+           </property>
            <item>
             <widget class="QLabel" name="fontFamilyLabel">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="font">
               <font>
                <family>黑体</family>
@@ -126,14 +177,13 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="previewLabel">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QFontComboBox" name="fontComboBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="currentFont">
               <font>
                <family>微软雅黑</family>
@@ -144,9 +194,18 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="fontsizeLayout" stretch="0,3,2,0">
+          <layout class="QHBoxLayout" name="fontsizeLayout" stretch="4,2,2">
+           <property name="spacing">
+            <number>5</number>
+           </property>
            <item>
             <widget class="QLabel" name="sizelabel">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -174,23 +233,51 @@
             </spacer>
            </item>
            <item>
-            <widget class="QComboBox" name="sizecomboBox"/>
-           </item>
-           <item>
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>TextLabel</string>
+            <widget class="QComboBox" name="sizecomboBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
              </property>
             </widget>
            </item>
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <layout class="QHBoxLayout" name="fontColorLayout">
+           <property name="spacing">
+            <number>5</number>
+           </property>
            <item>
-            <widget class="QLabel" name="label_2">
+            <widget class="QLabel" name="label">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
              <property name="text">
-              <string>TextLabel</string>
+              <string>文字颜色</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="fontColorlabel">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string/>
              </property>
             </widget>
            </item>

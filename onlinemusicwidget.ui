@@ -38,12 +38,6 @@ border-radius:10px;</string>
       <height>41</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>新宋体</family>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
     <property name="styleSheet">
      <string notr="true">color:white;
 border:1px solid white;
@@ -92,12 +86,6 @@ border-radius:5px;
       <width>71</width>
       <height>41</height>
      </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>新宋体</family>
-      <pointsize>14</pointsize>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton#searchButton
@@ -626,6 +614,23 @@ border:none;</string>
     <string notr="true">color:black</string>
    </property>
   </widget>
+  <widget class="QLabel" name="musicListLabel">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>90</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:white;
+</string>
+   </property>
+   <property name="text">
+    <string>播放列表</string>
+   </property>
+  </widget>
   <zorder>playerGroup</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>searchGroup</zorder>
@@ -634,6 +639,7 @@ border:none;</string>
   <zorder>localMusicListButton</zorder>
   <zorder>textEdit</zorder>
   <zorder>textEdit_2</zorder>
+  <zorder>musicListLabel</zorder>
   <zorder>musicList</zorder>
  </widget>
  <resources>

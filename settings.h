@@ -29,8 +29,11 @@ private slots:
 
 
 
+    void on_sizecomboBox_currentTextChanged(const QString &arg1);
+
 private:
     Ui::Settings *ui;
+    bool m_initializing = true;
 
 signals:
     void backgroundChanged();

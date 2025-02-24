@@ -64,8 +64,6 @@ OnlineMusicWidget::OnlineMusicWidget(QWidget *parent)
     musicModel = new QStandardItemModel(this);
     ui->musicList->setModel(musicModel);
 
-    //在构造函数中添加测试代码
-    //player->setSource(QUrl::fromLocalFile("D:\\songs\\电台节目\\白fi - 噗妮露是可爱史莱姆 ED「唱」.mp3"));
 }
 
 OnlineMusicWidget::~OnlineMusicWidget()
