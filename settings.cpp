@@ -28,6 +28,13 @@ Settings::Settings(QWidget *parent)
     ui->sizecomboBox->blockSignals(false);
 
     m_initializing = false;
+
+    //连接文字颜色槽函数
+    connect(ui->blackButton,&QPushButton::clicked,this,[this](){setTextColor(Qt::black);});//黑色
+    connect(ui->whiteButton,&QPushButton::clicked,this,[this](){setTextColor(Qt::white);});//白色
+    connect(ui->blueButton,&QPushButton::clicked,this,[this](){setTextColor(QColor(121, 255, 251));});//蓝色
+    connect(ui->yellowButton,&QPushButton::clicked,this,[this](){setTextColor(QColor(255, 255, 127));});//黄色
+    connect(ui->redButton,&QPushButton::clicked,this,[this](){setTextColor(QColor(200, 0, 0));});//红色
 }
 
 Settings::~Settings() {
@@ -114,4 +121,13 @@ void Settings::on_sizecomboBox_currentTextChanged(const QString &text)
             widget->setFont(newFont);
         }
     }
+}
+
+
+//文字颜色设置
+void Settings::setTextColor(const QColor &color)
+{
+    QSettings settings("iyl","MusicPlayer");
+    settings.setValue("app/textColor",color.name());
+    emit(textColorChanged(color));
 }

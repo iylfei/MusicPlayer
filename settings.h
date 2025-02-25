@@ -27,9 +27,9 @@ private slots:
 
     void changeFontSize();
 
-
-
     void on_sizecomboBox_currentTextChanged(const QString &arg1);
+
+    void setTextColor(const QColor &color);
 
 private:
     Ui::Settings *ui;
@@ -37,7 +37,7 @@ private:
 
 signals:
     void backgroundChanged();
-
+    void textColorChanged(const QColor &color);
 };
 
 #endif // SETTINGS_H

@@ -77,8 +77,7 @@ public:
         label = new QLabel(searchGroup);
         label->setObjectName("label");
         label->setGeometry(QRect(30, 20, 141, 41));
-        label->setStyleSheet(QString::fromUtf8("color:white;\n"
-"border:1px solid white;\n"
+        label->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
 "border-radius:5px;\n"
 ""));
         lineEdit = new QLineEdit(searchGroup);
@@ -95,7 +94,6 @@ public:
         searchButton->setStyleSheet(QString::fromUtf8("QPushButton#searchButton\n"
 "{\n"
 "	background:transparent;\n"
-"	color:rgb(200, 200, 200);\n"
 "	border:1px solid white;\n"
 "	border-radius:5px;\n"
 "}\n"
@@ -181,7 +179,7 @@ public:
         horizontalLayout->setStretch(2, 2);
         lyric = new QTextBrowser(OnlineMusicWidget);
         lyric->setObjectName("lyric");
-        lyric->setGeometry(QRect(650, 120, 411, 371));
+        lyric->setGeometry(QRect(650, 130, 411, 361));
         scrollArea = new QScrollArea(OnlineMusicWidget);
         scrollArea->setObjectName("scrollArea");
         scrollArea->setGeometry(QRect(1040, 120, 16, 371));
@@ -346,10 +344,10 @@ public:
 
         volumeLayout->addWidget(volumeSlider);
 
-        layoutWidget1->raise();
+        layoutWidget2->raise();
         authorLabel->raise();
-        layoutWidget1->raise();
-        layoutWidget1->raise();
+        layoutWidget2->raise();
+        layoutWidget2->raise();
         titleLabel->raise();
         localMusicListButton = new QPushButton(OnlineMusicWidget);
         localMusicListButton->setObjectName("localMusicListButton");
@@ -373,14 +371,13 @@ public:
         font5.setFamilies({QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221")});
         font5.setPointSize(12);
         musicList->setFont(font5);
-        musicList->setStyleSheet(QString::fromUtf8("color:black"));
+        musicList->setStyleSheet(QString::fromUtf8("color:black;"));
         musicListLabel = new QLabel(OnlineMusicWidget);
         musicListLabel->setObjectName("musicListLabel");
         musicListLabel->setGeometry(QRect(50, 90, 141, 41));
-        musicListLabel->setStyleSheet(QString::fromUtf8("color:white;\n"
-""));
+        musicListLabel->setStyleSheet(QString::fromUtf8(""));
         playerGroup->raise();
-        layoutWidget1->raise();
+        layoutWidget2->raise();
         searchGroup->raise();
         lyric->raise();
         scrollArea->raise();
@@ -406,10 +403,10 @@ public:
         minButton->setText(QCoreApplication::translate("OnlineMusicWidget", "\342\200\224", nullptr));
         closeButton->setText(QCoreApplication::translate("OnlineMusicWidget", "X", nullptr));
         playerGroup->setTitle(QString());
-        titleLabel->setText(QString());
+        titleLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "\346\255\214\346\233\262\345\220\215", nullptr));
         currentTimeLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "00:00", nullptr));
-        totalTimeLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "01:00", nullptr));
-        authorLabel->setText(QString());
+        totalTimeLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "00:00", nullptr));
+        authorLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "\344\275\234\350\200\205", nullptr));
         prevButton->setText(QString());
         playButton->setText(QString());
         nextButton->setText(QString());

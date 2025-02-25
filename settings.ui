@@ -100,9 +100,9 @@
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>20</x>
+          <x>10</x>
           <y>20</y>
-          <width>441</width>
+          <width>521</width>
           <height>441</height>
          </rect>
         </property>
@@ -119,6 +119,18 @@
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>256</width>
+               <height>103</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>256</width>
+               <height>103</height>
+              </size>
              </property>
              <property name="font">
               <font>
@@ -137,10 +149,16 @@
            <item>
             <widget class="QPushButton" name="backgroundButton">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>220</width>
+               <height>0</height>
+              </size>
              </property>
              <property name="text">
               <string>自定义背景</string>
@@ -150,7 +168,7 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="fontFamilyLayout" stretch="3,0">
+          <layout class="QHBoxLayout" name="fontFamilyLayout" stretch="3,1">
            <property name="spacing">
             <number>5</number>
            </property>
@@ -161,6 +179,12 @@
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>220</width>
+               <height>16777215</height>
+              </size>
              </property>
              <property name="font">
               <font>
@@ -179,10 +203,22 @@
            <item>
             <widget class="QFontComboBox" name="fontComboBox">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>220</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>220</width>
+               <height>16777215</height>
+              </size>
              </property>
              <property name="currentFont">
               <font>
@@ -194,7 +230,7 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="fontsizeLayout" stretch="4,2,2">
+          <layout class="QHBoxLayout" name="fontsizeLayout" stretch="4,0,0,0">
            <property name="spacing">
             <number>5</number>
            </property>
@@ -206,13 +242,19 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="maximumSize">
+              <size>
+               <width>280</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>16</pointsize>
               </font>
              </property>
              <property name="text">
-              <string> 文字大小</string>
+              <string>字号</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -220,7 +262,7 @@
             </widget>
            </item>
            <item>
-            <spacer name="horizontalSpacer">
+            <spacer name="horizontalSpacer_2">
              <property name="orientation">
               <enum>Qt::Orientation::Horizontal</enum>
              </property>
@@ -240,22 +282,53 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>220</width>
+               <height>16777215</height>
+              </size>
+             </property>
             </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
            </item>
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="fontColorLayout">
+          <layout class="QHBoxLayout" name="textColorLayout" stretch="2,1,1,1,1,0,1">
            <property name="spacing">
             <number>5</number>
            </property>
            <item>
-            <widget class="QLabel" name="label">
+            <widget class="QLabel" name="textColorlabel">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>220</width>
+               <height>16777215</height>
+              </size>
              </property>
              <property name="font">
               <font>
@@ -265,6 +338,189 @@
              </property>
              <property name="text">
               <string>文字颜色</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="blackButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton#blackButton {
+background-color:black;
+border:2px solid rgb(230, 230, 230);
+border-radius: 15px;
+}
+QPushButton#blackButton:hover {
+border:2px solid rgb(200, 200, 200);
+}
+</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="whiteButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton#whiteButton {
+background-color:white;
+border:2px solid rgb(230, 230, 230);
+border-radius: 15px;
+}
+QPushButton#whiteButton:hover {
+border:2px solid rgb(200, 200, 200);
+}
+</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="blueButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton#blueButton {
+background-color:rgb(121, 255, 251);
+border:2px solid rgb(230, 230, 230);
+border-radius: 15px;
+}
+QPushButton#blueButton:hover {
+border:2px solid rgb(200, 200, 200);
+}
+</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="yellowButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton#yellowButton {
+background-color:rgb(255, 255, 127);
+border:2px solid rgb(230, 230, 230);
+border-radius: 15px;
+}
+QPushButton#yellowButton:hover {
+border:2px solid rgb(200, 200, 200);
+}
+</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="redButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton#redButton {
+background-color:rgb(200, 0, 0);
+border:2px solid rgb(230, 230, 230);
+border-radius: 15px;
+}
+QPushButton#redButton:hover {
+border:2px solid rgb(200, 200, 200);
+}
+</string>
+             </property>
+             <property name="text">
+              <string/>
              </property>
             </widget>
            </item>

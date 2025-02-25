@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
         QFont appFont(fontFamily);
         appFont.setPixelSize(fontSize);
 
-        // 强制设置全局字体
+        // 设置全局字体
         qApp->setFont(appFont);
         QApplication::setFont(appFont);
 

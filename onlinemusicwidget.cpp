@@ -7,6 +7,8 @@ OnlineMusicWidget::OnlineMusicWidget(QWidget *parent)
 {
     ui->setupUi(this);
 
+    this->setObjectName("mainWindow");
+
     //禁止改变窗口尺寸
     this->setFixedSize(this->geometry().size());
     //去掉标题
@@ -64,6 +66,12 @@ OnlineMusicWidget::OnlineMusicWidget(QWidget *parent)
     musicModel = new QStandardItemModel(this);
     ui->musicList->setModel(musicModel);
 
+    //设置主界面文字颜色
+    QSettings settings("iyl","MusicPlayer");
+    QString textColor = settings.value("app/textColor","white").toString();
+
+    this->setStyleSheet(QString("#mainWindow, #mainWindow * { color: %1; }").arg(textColor));
+    qDebug() <<"text color:" <<textColor;
 }
 
 OnlineMusicWidget::~OnlineMusicWidget()
@@ -353,7 +361,7 @@ void OnlineMusicWidget::on_localMusicListButton_clicked()
 
         // 设置样式
         container->setStyleSheet(
-            "QWidget { background-color: white; }"
+            "QWidget { ""background-color: white;" "color: black;""}"
             "QLabel { color: black; font-size: 14px; font-weight: bold; }"
             "QPushButton {"
             "    color: lightblue;"
@@ -673,8 +681,12 @@ void OnlineMusicWidget::on_prevButton_clicked()
 void OnlineMusicWidget::on_optionsButton_clicked()
 {
     if(!settingsDialog){
-        settingsDialog = new Settings(this);
+        settingsDialog = new Settings(nullptr);
+        connect(settingsDialog, &Settings::textColorChanged, this, [this](const QColor &color) {
+            // 更新主窗口文字颜色
+            this->setStyleSheet(QString("#mainWindow, #mainWindow * { color: %1; }").arg(color.name()));
+        });
     }
+
     settingsDialog->show();
 }
-

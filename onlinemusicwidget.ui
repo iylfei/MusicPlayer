@@ -39,8 +39,7 @@ border-radius:10px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:white;
-border:1px solid white;
+     <string notr="true">border:1px solid white;
 border-radius:5px;
 </string>
     </property>
@@ -91,7 +90,6 @@ border-radius:5px;
      <string notr="true">QPushButton#searchButton
 {
 	background:transparent;
-	color:rgb(200, 200, 200);
 	border:1px solid white;
 	border-radius:5px;
 }
@@ -241,9 +239,9 @@ QPushButton#closeButton:pressed {
    <property name="geometry">
     <rect>
      <x>650</x>
-     <y>120</y>
+     <y>130</y>
      <width>411</width>
-     <height>371</height>
+     <height>361</height>
     </rect>
    </property>
   </widget>
@@ -301,7 +299,7 @@ QPushButton#closeButton:pressed {
      <string notr="true"/>
     </property>
     <property name="text">
-     <string/>
+     <string>歌曲名</string>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
@@ -362,7 +360,7 @@ QSlider::handle:horizontal {
         <string notr="true">color: grey;</string>
        </property>
        <property name="text">
-        <string>01:00</string>
+        <string>00:00</string>
        </property>
       </widget>
      </item>
@@ -387,7 +385,7 @@ QSlider::handle:horizontal {
      <string notr="true">color:white;</string>
     </property>
     <property name="text">
-     <string/>
+     <string>作者</string>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
@@ -611,7 +609,7 @@ border:none;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:black</string>
+    <string notr="true">color:black;</string>
    </property>
   </widget>
   <widget class="QLabel" name="musicListLabel">
@@ -624,8 +622,7 @@ border:none;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:white;
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>播放列表</string>
