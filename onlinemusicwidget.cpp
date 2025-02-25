@@ -45,6 +45,9 @@ OnlineMusicWidget::OnlineMusicWidget(QWidget *parent)
         repaint();
     });
 
+    //设置播放列表为不可编辑
+    ui->musicList->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
     //安装事件过滤器
     qApp->installEventFilter(this);
     //本地歌曲路径
@@ -477,8 +480,26 @@ void OnlineMusicWidget::loadMusicList()
 //双击播放本地音乐
 void OnlineMusicWidget::onLocalMusicDoubleClicked(QListWidgetItem *item)
 {
-    // 设定播放路径
+    // 获取播放路径
     QString filepath = item->data(Qt::UserRole).toString();
+
+    // 重置滚动相关的变量
+    scrollPosition = 0;
+    textWidth = 0;
+    scrollOffset = 0;
+
+    //设置默认显示信息
+    QFileInfo fileInfo(filepath);
+    fullTitle = fileInfo.baseName();
+
+    //绘制标题和作者信息
+    updatenonscrollText();
+    drawAuthorLabel();
+
+    // 连接元数据信号
+    updateMetadata();
+
+    //播放
     player->setSource(QUrl::fromLocalFile(filepath));
     player->play();
 
@@ -487,17 +508,46 @@ void OnlineMusicWidget::onLocalMusicDoubleClicked(QListWidgetItem *item)
     isplaying = true;
 
     //添加到播放列表
-
     addToPlaylist(filepath);
+}
+
+//双击播放 播放列表中的音乐
+void OnlineMusicWidget::on_musicList_doubleClicked(const QModelIndex &index)
+{
+    //获取播放路径
+    QString filepath = musicModel->data(index,Qt::UserRole).toString();
 
     // 重置滚动相关的变量
     scrollPosition = 0;
     textWidth = 0;
     scrollOffset = 0;
 
-    disconnect(player, &QMediaPlayer::metaDataChanged, nullptr, nullptr);
+    //设置默认显示信息
+    QFileInfo fileInfo(filepath);
+    fullTitle = fileInfo.baseName();
 
-    //显示作者信息
+    //绘制标题和作者信息
+    updatenonscrollText();
+    drawAuthorLabel();
+
+    // 连接元数据信号
+    updateMetadata();
+
+    //播放
+    player->setSource(QUrl::fromLocalFile(filepath));
+    player->play();
+
+    // 更改播放图标
+    ui->playButton->setIcon(QIcon(":/images/prefix1/images/pause.png"));
+    isplaying = true;
+}
+
+//连接信号并获取元数据
+void OnlineMusicWidget::updateMetadata()
+{
+    //断开之前的信号连接，防止重复连接
+    disconnect(player, &QMediaPlayer::metaDataChanged, nullptr, nullptr);
+    //连接元数据信号
     connect(player, &QMediaPlayer::metaDataChanged, this, [this]() {
         // 获取标题
         fullTitle = player->metaData().value(QMediaMetaData::Title).toString();
@@ -516,50 +566,54 @@ void OnlineMusicWidget::onLocalMusicDoubleClicked(QListWidgetItem *item)
         if(artist.isEmpty()) {
             artist = "未知歌手";
         }
-
-    //绘制作者
         m_currentArtist = artist;
+
+        updatenonscrollText();
         updateAuthorLabel();
 
+        // 计算是否需要滚动
+        QFontMetrics fm(ui->titleLabel->font());
+        textWidth = fm.horizontalAdvance(fullTitle);  // 直接给类成员变量赋值
+        int labelWidth = ui->titleLabel->width();
 
-    ui->titleLabel->setText(fullTitle);
-    // 计算是否需要滚动
-    QFontMetrics fm(ui->titleLabel->font());
-    textWidth = fm.horizontalAdvance(fullTitle);  // 直接给类成员变量赋值
-    int labelWidth = ui->titleLabel->width();
+        // 设置是否需要滚动的标志
+        needScroll = (textWidth > labelWidth);
 
-    // 设置是否需要滚动的标志
-    needScroll = (textWidth > labelWidth);
-
-    // 根据标志决定是否启动滚动
-    if (needScroll) {
-        if (!scrollTimer->isActive()) {
-            scrollTimer->start(SCROLL_INTERVAL);
+        // 根据标志决定是否启动滚动
+        if (needScroll) {
+            if (!scrollTimer->isActive()) {
+                scrollTimer->start(SCROLL_INTERVAL);
+            }
+        } else {
+            scrollTimer->stop();
         }
-    } else {
-        scrollTimer->stop();
-        // 直接绘制非滚动文本
-        updatenonscrollText();
-    }
     });
 }
 
-//更新作者信息
-void OnlineMusicWidget::updateAuthorLabel()
+//绘制作者信息
+void OnlineMusicWidget::drawAuthorLabel()
 {
     if (m_currentArtist.isEmpty()) return;
+
     int authorwidth = ui->authorLabel->width();
     QPixmap pixmap(authorwidth, ui->authorLabel->height());
     pixmap.fill(Qt::transparent);
+
     QPainter painter(&pixmap);
     painter.setFont(ui->authorLabel->font());
     painter.setPen(m_textColor);
     painter.drawText(QRect(0, 0, authorwidth, ui->authorLabel->height()),
                      Qt::AlignLeft | Qt::AlignVCenter,
                      m_currentArtist);
+
     ui->authorLabel->setPixmap(pixmap);
 }
-
+//更新作者信息
+void OnlineMusicWidget::updateAuthorLabel()
+{
+    updateMetadata();
+    drawAuthorLabel();
+}
 //非滚动标题的显示
 void OnlineMusicWidget::updatenonscrollText()
 {
@@ -709,3 +763,5 @@ void OnlineMusicWidget::on_optionsButton_clicked()
 
     settingsDialog->show();
 }
+
+

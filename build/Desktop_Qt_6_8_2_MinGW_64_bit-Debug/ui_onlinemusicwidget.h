@@ -344,10 +344,10 @@ public:
 
         volumeLayout->addWidget(volumeSlider);
 
-        layoutWidget2->raise();
+        layoutWidget->raise();
         authorLabel->raise();
-        layoutWidget2->raise();
-        layoutWidget2->raise();
+        layoutWidget->raise();
+        layoutWidget->raise();
         titleLabel->raise();
         localMusicListButton = new QPushButton(OnlineMusicWidget);
         localMusicListButton->setObjectName("localMusicListButton");
@@ -377,7 +377,7 @@ public:
         musicListLabel->setGeometry(QRect(50, 90, 141, 41));
         musicListLabel->setStyleSheet(QString::fromUtf8(""));
         playerGroup->raise();
-        layoutWidget2->raise();
+        layoutWidget->raise();
         searchGroup->raise();
         lyric->raise();
         scrollArea->raise();
@@ -406,7 +406,7 @@ public:
         titleLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "\346\255\214\346\233\262\345\220\215", nullptr));
         currentTimeLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "00:00", nullptr));
         totalTimeLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "00:00", nullptr));
-        authorLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "\344\275\234\350\200\205", nullptr));
+        authorLabel->setText(QString());
         prevButton->setText(QString());
         playButton->setText(QString());
         nextButton->setText(QString());

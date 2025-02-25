@@ -86,6 +86,12 @@ private slots:
 
     void updatenonscrollText();
 
+    void updateMetadata();
+
+    void drawAuthorLabel();
+
+    void on_musicList_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::OnlineMusicWidget *ui;
 
