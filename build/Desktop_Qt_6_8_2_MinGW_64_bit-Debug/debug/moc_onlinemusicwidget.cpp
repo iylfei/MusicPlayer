@@ -62,7 +62,9 @@ static constexpr auto qt_meta_stringdata_ZN17OnlineMusicWidgetE = QtMocHelpers::
     "on_prevButton_clicked",
     "addToPlaylist",
     "songPath",
-    "on_optionsButton_clicked"
+    "on_optionsButton_clicked",
+    "updateAuthorLabel",
+    "updatenonscrollText"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -74,7 +76,7 @@ Q_CONSTINIT static const uint qt_meta_data_ZN17OnlineMusicWidgetE[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      17,   14, // methods
+      19,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -82,23 +84,25 @@ Q_CONSTINIT static const uint qt_meta_data_ZN17OnlineMusicWidgetE[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  116,    2, 0x08,    1 /* Private */,
-       3,    0,  117,    2, 0x08,    2 /* Private */,
-       4,    0,  118,    2, 0x08,    3 /* Private */,
-       5,    0,  119,    2, 0x08,    4 /* Private */,
-       6,    0,  120,    2, 0x08,    5 /* Private */,
-       7,    1,  121,    2, 0x08,    6 /* Private */,
-       9,    1,  124,    2, 0x08,    8 /* Private */,
-      11,    1,  127,    2, 0x08,   10 /* Private */,
-      13,    0,  130,    2, 0x08,   12 /* Private */,
-      14,    0,  131,    2, 0x08,   13 /* Private */,
-      15,    0,  132,    2, 0x08,   14 /* Private */,
-      16,    1,  133,    2, 0x08,   15 /* Private */,
-      19,    0,  136,    2, 0x08,   17 /* Private */,
-      20,    0,  137,    2, 0x08,   18 /* Private */,
-      21,    0,  138,    2, 0x08,   19 /* Private */,
-      22,    1,  139,    2, 0x08,   20 /* Private */,
-      24,    0,  142,    2, 0x08,   22 /* Private */,
+       1,    0,  128,    2, 0x08,    1 /* Private */,
+       3,    0,  129,    2, 0x08,    2 /* Private */,
+       4,    0,  130,    2, 0x08,    3 /* Private */,
+       5,    0,  131,    2, 0x08,    4 /* Private */,
+       6,    0,  132,    2, 0x08,    5 /* Private */,
+       7,    1,  133,    2, 0x08,    6 /* Private */,
+       9,    1,  136,    2, 0x08,    8 /* Private */,
+      11,    1,  139,    2, 0x08,   10 /* Private */,
+      13,    0,  142,    2, 0x08,   12 /* Private */,
+      14,    0,  143,    2, 0x08,   13 /* Private */,
+      15,    0,  144,    2, 0x08,   14 /* Private */,
+      16,    1,  145,    2, 0x08,   15 /* Private */,
+      19,    0,  148,    2, 0x08,   17 /* Private */,
+      20,    0,  149,    2, 0x08,   18 /* Private */,
+      21,    0,  150,    2, 0x08,   19 /* Private */,
+      22,    1,  151,    2, 0x08,   20 /* Private */,
+      24,    0,  154,    2, 0x08,   22 /* Private */,
+      25,    0,  155,    2, 0x08,   23 /* Private */,
+      26,    0,  156,    2, 0x08,   24 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -117,6 +121,8 @@ Q_CONSTINIT static const uint qt_meta_data_ZN17OnlineMusicWidgetE[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,   23,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -169,6 +175,10 @@ Q_CONSTINIT const QMetaObject OnlineMusicWidget::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'on_optionsButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'updateAuthorLabel'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'updatenonscrollText'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -196,6 +206,8 @@ void OnlineMusicWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 14: _t->on_prevButton_clicked(); break;
         case 15: _t->addToPlaylist((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 16: _t->on_optionsButton_clicked(); break;
+        case 17: _t->updateAuthorLabel(); break;
+        case 18: _t->updatenonscrollText(); break;
         default: ;
         }
     }
@@ -220,14 +232,14 @@ int OnlineMusicWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 17)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 17;
+        _id -= 19;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 17)
+        if (_id < 19)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 17;
+        _id -= 19;
     }
     return _id;
 }

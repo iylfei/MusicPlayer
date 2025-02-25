@@ -82,6 +82,10 @@ private slots:
 
     void on_optionsButton_clicked();
 
+    void updateAuthorLabel();
+
+    void updatenonscrollText();
+
 private:
     Ui::OnlineMusicWidget *ui;
 
@@ -101,13 +105,15 @@ private:
     QString musicListPath; // 保存json文件的路径
     QTimer *scrollTimer;        // 用于控制文本滚动
     QString fullTitle;          // 完整的标题文本
+    QString m_currentArtist; // 当前歌手信息
     int scrollPosition;         // 当前滚动位置
     static const int SCROLL_INTERVAL = 30;  // 滚动间隔（毫秒）
     int scrollOffset = 0;        // 像素偏移量
     int textWidth = 0;           // 文本总像素宽度
     bool needScroll = false;  // 是否需要滚动
-    QStandardItemModel *musicModel;
-    Settings *settingsDialog;
+    QStandardItemModel *musicModel;  //播放列表
+    Settings *settingsDialog; //设置对话框
+    QColor m_textColor = Qt::white;
 
 protected:
     //音乐下载和播放

@@ -69,9 +69,9 @@ OnlineMusicWidget::OnlineMusicWidget(QWidget *parent)
     //设置主界面文字颜色
     QSettings settings("iyl","MusicPlayer");
     QString textColor = settings.value("app/textColor","white").toString();
+    m_textColor = QColor(textColor);
 
     this->setStyleSheet(QString("#mainWindow, #mainWindow * { color: %1; }").arg(textColor));
-    qDebug() <<"text color:" <<textColor;
 }
 
 OnlineMusicWidget::~OnlineMusicWidget()
@@ -518,15 +518,8 @@ void OnlineMusicWidget::onLocalMusicDoubleClicked(QListWidgetItem *item)
         }
 
     //绘制作者
-    int authorwidth = ui->authorLabel->width();
-    QPixmap pixmap(authorwidth,ui->authorLabel->height());
-    pixmap.fill(Qt::transparent);
-    QPainter painter(&pixmap);
-    painter.setFont(ui->authorLabel->font());
-    painter.setPen(Qt::white);
-    QRect textRect = QRect(0, 0, authorwidth, ui->authorLabel->height());
-    painter.drawText(textRect, Qt::AlignLeft | Qt::AlignVCenter, artist);
-    ui->authorLabel->setPixmap(pixmap);
+        m_currentArtist = artist;
+        updateAuthorLabel();
 
 
     ui->titleLabel->setText(fullTitle);
@@ -546,18 +539,40 @@ void OnlineMusicWidget::onLocalMusicDoubleClicked(QListWidgetItem *item)
     } else {
         scrollTimer->stop();
         // 直接绘制非滚动文本
-        QPixmap pixmap(labelWidth, ui->titleLabel->height());
-        pixmap.fill(Qt::transparent);
-        QPainter painter(&pixmap);
-        painter.setFont(ui->titleLabel->font());
-        painter.setPen(Qt::white);
-        QRect textRect = QRect(0, 0, labelWidth, ui->titleLabel->height());
-        painter.drawText(textRect, Qt::AlignLeft | Qt::AlignVCenter, fullTitle);
-        ui->titleLabel->setPixmap(pixmap);
+        updatenonscrollText();
     }
     });
 }
 
+//更新作者信息
+void OnlineMusicWidget::updateAuthorLabel()
+{
+    if (m_currentArtist.isEmpty()) return;
+    int authorwidth = ui->authorLabel->width();
+    QPixmap pixmap(authorwidth, ui->authorLabel->height());
+    pixmap.fill(Qt::transparent);
+    QPainter painter(&pixmap);
+    painter.setFont(ui->authorLabel->font());
+    painter.setPen(m_textColor);
+    painter.drawText(QRect(0, 0, authorwidth, ui->authorLabel->height()),
+                     Qt::AlignLeft | Qt::AlignVCenter,
+                     m_currentArtist);
+    ui->authorLabel->setPixmap(pixmap);
+}
+
+//非滚动标题的显示
+void OnlineMusicWidget::updatenonscrollText()
+{
+    int labelWidth = ui->titleLabel->width();
+    QPixmap pixmap(labelWidth, ui->titleLabel->height());
+    pixmap.fill(Qt::transparent);
+    QPainter painter(&pixmap);
+    painter.setFont(ui->titleLabel->font());
+    painter.setPen(m_textColor);
+    QRect textRect = QRect(0, 0, labelWidth, ui->titleLabel->height());
+    painter.drawText(textRect, Qt::AlignLeft | Qt::AlignVCenter, fullTitle);
+    ui->titleLabel->setPixmap(pixmap);
+}
 
 //标题滚动显示
 void OnlineMusicWidget::scrollText()
@@ -575,7 +590,7 @@ void OnlineMusicWidget::scrollText()
 
     QPainter painter(&pixmap);
     painter.setFont(ui->titleLabel->font());
-    painter.setPen(Qt::white);
+    painter.setPen(m_textColor);
 
     int fullWidth = fm.horizontalAdvance(displayText);
 
@@ -685,6 +700,10 @@ void OnlineMusicWidget::on_optionsButton_clicked()
         connect(settingsDialog, &Settings::textColorChanged, this, [this](const QColor &color) {
             // 更新主窗口文字颜色
             this->setStyleSheet(QString("#mainWindow, #mainWindow * { color: %1; }").arg(color.name()));
+            QSettings settings("iyl","MusicPlayer");
+            m_textColor = settings.value("app/textColor","white").toString();
+            updatenonscrollText();
+            updateAuthorLabel();
         });
     }
 

@@ -385,7 +385,7 @@ QSlider::handle:horizontal {
      <string notr="true">color:white;</string>
     </property>
     <property name="text">
-     <string>作者</string>
+     <string/>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
