@@ -1,4 +1,4 @@
-#include "onlinemusicwidget.h"
+#include "musicPlayer.h"
 
 #include <QApplication>
 #include <QSettings>

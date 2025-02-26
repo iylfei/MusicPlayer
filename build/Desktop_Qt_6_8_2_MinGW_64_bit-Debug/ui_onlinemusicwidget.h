@@ -21,7 +21,6 @@
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QTextBrowser>
-#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,9 @@ public:
     QPushButton *volumeButton;
     QSlider *volumeSlider;
     QPushButton *localMusicListButton;
-    QTextEdit *textEdit;
-    QTextEdit *textEdit_2;
     QListView *musicList;
     QLabel *musicListLabel;
+    QLabel *albumCover;
 
     void setupUi(QWidget *OnlineMusicWidget)
     {
@@ -94,12 +92,13 @@ public:
         searchButton->setStyleSheet(QString::fromUtf8("QPushButton#searchButton\n"
 "{\n"
 "	background:transparent;\n"
-"	border:1px solid white;\n"
-"	border-radius:5px;\n"
+"	border:1px solid rgb(208, 208, 208);\n"
+"	border-radius:8px;\n"
 "}\n"
 "QPushButton#searchButton:hover \n"
 "{	\n"
 "	background:transparent;\n"
+"	border:1px solid rgb(255, 255, 255);\n"
 "	color:rgb(255, 255, 255);\n"
 "}"));
         layoutWidget = new QWidget(OnlineMusicWidget);
@@ -344,10 +343,10 @@ public:
 
         volumeLayout->addWidget(volumeSlider);
 
-        layoutWidget->raise();
+        layoutWidget2->raise();
         authorLabel->raise();
-        layoutWidget->raise();
-        layoutWidget->raise();
+        layoutWidget2->raise();
+        layoutWidget2->raise();
         titleLabel->raise();
         localMusicListButton = new QPushButton(OnlineMusicWidget);
         localMusicListButton->setObjectName("localMusicListButton");
@@ -358,12 +357,6 @@ public:
         icon5.addFile(QString::fromUtf8(":/images/prefix1/images/localMusicList.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         localMusicListButton->setIcon(icon5);
         localMusicListButton->setIconSize(QSize(25, 25));
-        textEdit = new QTextEdit(OnlineMusicWidget);
-        textEdit->setObjectName("textEdit");
-        textEdit->setGeometry(QRect(410, 130, 211, 171));
-        textEdit_2 = new QTextEdit(OnlineMusicWidget);
-        textEdit_2->setObjectName("textEdit_2");
-        textEdit_2->setGeometry(QRect(410, 300, 211, 191));
         musicList = new QListView(OnlineMusicWidget);
         musicList->setObjectName("musicList");
         musicList->setGeometry(QRect(40, 130, 271, 361));
@@ -376,16 +369,20 @@ public:
         musicListLabel->setObjectName("musicListLabel");
         musicListLabel->setGeometry(QRect(50, 90, 141, 41));
         musicListLabel->setStyleSheet(QString::fromUtf8(""));
+        albumCover = new QLabel(OnlineMusicWidget);
+        albumCover->setObjectName("albumCover");
+        albumCover->setGeometry(QRect(370, 200, 231, 231));
+        albumCover->setStyleSheet(QString::fromUtf8("border:8px solid rgb(0, 170, 255);\n"
+"border-radius:15px;"));
         playerGroup->raise();
-        layoutWidget->raise();
+        layoutWidget2->raise();
         searchGroup->raise();
         lyric->raise();
         scrollArea->raise();
         localMusicListButton->raise();
-        textEdit->raise();
-        textEdit_2->raise();
         musicListLabel->raise();
         musicList->raise();
+        albumCover->raise();
 
         retranslateUi(OnlineMusicWidget);
 
@@ -416,6 +413,7 @@ public:
 #endif // QT_CONFIG(tooltip)
         localMusicListButton->setText(QString());
         musicListLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "\346\222\255\346\224\276\345\210\227\350\241\250", nullptr));
+        albumCover->setText(QString());
     } // retranslateUi
 
 };
