@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
         qApp->setFont(appFont);
         QApplication::setFont(appFont);
 
-        OnlineMusicWidget w;
+        MusicPlayer w;
         w.show();
         exitCode = a.exec();
     } while (exitCode == EXIT_CODE_REBOOT);

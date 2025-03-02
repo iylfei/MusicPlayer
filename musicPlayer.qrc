@@ -10,5 +10,6 @@
         <file>images/localMusicList.png</file>
         <file>images/options.png</file>
         <file>images/defaultCover.png</file>
+        <file>images/uploadCover.png</file>
     </qresource>
 </RCC>

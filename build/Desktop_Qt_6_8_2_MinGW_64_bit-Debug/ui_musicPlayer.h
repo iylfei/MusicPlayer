@@ -18,14 +18,13 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListView>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSlider>
-#include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_OnlineMusicWidget
+class Ui_MusicPlayer
 {
 public:
     QGroupBox *searchGroup;
@@ -37,9 +36,6 @@ public:
     QPushButton *optionsButton;
     QPushButton *minButton;
     QPushButton *closeButton;
-    QTextBrowser *lyric;
-    QScrollArea *scrollArea;
-    QWidget *scrollAreaWidgetContents;
     QGroupBox *playerGroup;
     QLabel *titleLabel;
     QWidget *layoutWidget1;
@@ -61,13 +57,16 @@ public:
     QListView *musicList;
     QLabel *musicListLabel;
     QLabel *albumCover;
+    QPushButton *pushButton;
+    QTextEdit *lyric;
 
-    void setupUi(QWidget *OnlineMusicWidget)
+    void setupUi(QWidget *MusicPlayer)
     {
-        if (OnlineMusicWidget->objectName().isEmpty())
-            OnlineMusicWidget->setObjectName("OnlineMusicWidget");
-        OnlineMusicWidget->resize(1076, 622);
-        searchGroup = new QGroupBox(OnlineMusicWidget);
+        if (MusicPlayer->objectName().isEmpty())
+            MusicPlayer->setObjectName("MusicPlayer");
+        MusicPlayer->resize(1076, 622);
+        MusicPlayer->setStyleSheet(QString::fromUtf8(""));
+        searchGroup = new QGroupBox(MusicPlayer);
         searchGroup->setObjectName("searchGroup");
         searchGroup->setGeometry(QRect(200, 10, 661, 81));
         searchGroup->setStyleSheet(QString::fromUtf8("border:1px solid white;\n"
@@ -84,6 +83,7 @@ public:
         QFont font;
         font.setPointSize(12);
         lineEdit->setFont(font);
+        lineEdit->setStyleSheet(QString::fromUtf8("color:black;"));
         searchButton = new QPushButton(searchGroup);
         searchButton->setObjectName("searchButton");
         searchButton->setGeometry(QRect(530, 20, 71, 41));
@@ -101,7 +101,7 @@ public:
 "	border:1px solid rgb(255, 255, 255);\n"
 "	color:rgb(255, 255, 255);\n"
 "}"));
-        layoutWidget = new QWidget(OnlineMusicWidget);
+        layoutWidget = new QWidget(MusicPlayer);
         layoutWidget->setObjectName("layoutWidget");
         layoutWidget->setGeometry(QRect(933, 0, 145, 41));
         horizontalLayout = new QHBoxLayout(layoutWidget);
@@ -176,18 +176,7 @@ public:
         horizontalLayout->setStretch(0, 2);
         horizontalLayout->setStretch(1, 1);
         horizontalLayout->setStretch(2, 2);
-        lyric = new QTextBrowser(OnlineMusicWidget);
-        lyric->setObjectName("lyric");
-        lyric->setGeometry(QRect(650, 130, 411, 361));
-        scrollArea = new QScrollArea(OnlineMusicWidget);
-        scrollArea->setObjectName("scrollArea");
-        scrollArea->setGeometry(QRect(1040, 120, 16, 371));
-        scrollArea->setWidgetResizable(true);
-        scrollAreaWidgetContents = new QWidget();
-        scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 16, 352));
-        scrollArea->setWidget(scrollAreaWidgetContents);
-        playerGroup = new QGroupBox(OnlineMusicWidget);
+        playerGroup = new QGroupBox(MusicPlayer);
         playerGroup->setObjectName("playerGroup");
         playerGroup->setGeometry(QRect(50, 520, 881, 91));
         titleLabel = new QLabel(playerGroup);
@@ -343,12 +332,12 @@ public:
 
         volumeLayout->addWidget(volumeSlider);
 
-        layoutWidget1->raise();
+        layoutWidget3->raise();
         authorLabel->raise();
-        layoutWidget1->raise();
-        layoutWidget1->raise();
+        layoutWidget3->raise();
+        layoutWidget3->raise();
         titleLabel->raise();
-        localMusicListButton = new QPushButton(OnlineMusicWidget);
+        localMusicListButton = new QPushButton(MusicPlayer);
         localMusicListButton->setObjectName("localMusicListButton");
         localMusicListButton->setGeometry(QRect(1020, 580, 31, 31));
         localMusicListButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
@@ -357,7 +346,7 @@ public:
         icon5.addFile(QString::fromUtf8(":/images/prefix1/images/localMusicList.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         localMusicListButton->setIcon(icon5);
         localMusicListButton->setIconSize(QSize(25, 25));
-        musicList = new QListView(OnlineMusicWidget);
+        musicList = new QListView(MusicPlayer);
         musicList->setObjectName("musicList");
         musicList->setGeometry(QRect(40, 130, 271, 361));
         QFont font5;
@@ -365,61 +354,78 @@ public:
         font5.setPointSize(12);
         musicList->setFont(font5);
         musicList->setStyleSheet(QString::fromUtf8("color:black;"));
-        musicListLabel = new QLabel(OnlineMusicWidget);
+        musicListLabel = new QLabel(MusicPlayer);
         musicListLabel->setObjectName("musicListLabel");
         musicListLabel->setGeometry(QRect(50, 90, 141, 41));
         musicListLabel->setStyleSheet(QString::fromUtf8(""));
-        albumCover = new QLabel(OnlineMusicWidget);
+        albumCover = new QLabel(MusicPlayer);
         albumCover->setObjectName("albumCover");
         albumCover->setGeometry(QRect(370, 200, 231, 231));
         albumCover->setStyleSheet(QString::fromUtf8("border:8px solid rgb(0, 170, 255);\n"
 "border-radius:15px;"));
+        pushButton = new QPushButton(MusicPlayer);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(1030, 100, 31, 31));
+        pushButton->setStyleSheet(QString::fromUtf8("background-color:transparent;\n"
+"border:1px solid rgb(255, 255, 255);\n"
+"border-radius:8px;"));
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/images/prefix1/images/uploadCover.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        pushButton->setIcon(icon6);
+        pushButton->setIconSize(QSize(30, 30));
+        lyric = new QTextEdit(MusicPlayer);
+        lyric->setObjectName("lyric");
+        lyric->setGeometry(QRect(730, 130, 331, 361));
         playerGroup->raise();
-        layoutWidget1->raise();
+        layoutWidget3->raise();
         searchGroup->raise();
-        lyric->raise();
-        scrollArea->raise();
         localMusicListButton->raise();
         musicListLabel->raise();
         musicList->raise();
         albumCover->raise();
+        pushButton->raise();
+        lyric->raise();
 
-        retranslateUi(OnlineMusicWidget);
+        retranslateUi(MusicPlayer);
 
-        QMetaObject::connectSlotsByName(OnlineMusicWidget);
+        QMetaObject::connectSlotsByName(MusicPlayer);
     } // setupUi
 
-    void retranslateUi(QWidget *OnlineMusicWidget)
+    void retranslateUi(QWidget *MusicPlayer)
     {
-        OnlineMusicWidget->setWindowTitle(QCoreApplication::translate("OnlineMusicWidget", "OnlineMusicWidget", nullptr));
+        MusicPlayer->setWindowTitle(QCoreApplication::translate("MusicPlayer", "OnlineMusicWidget", nullptr));
         searchGroup->setTitle(QString());
-        label->setText(QCoreApplication::translate("OnlineMusicWidget", "\346\220\234\347\264\242\346\255\214\346\233\262\345\220\215\347\247\260", nullptr));
+        label->setText(QCoreApplication::translate("MusicPlayer", "\346\220\234\347\264\242\346\255\214\346\233\262\345\220\215\347\247\260", nullptr));
         lineEdit->setText(QString());
-        searchButton->setText(QCoreApplication::translate("OnlineMusicWidget", "\346\220\234\347\264\242", nullptr));
+        searchButton->setText(QCoreApplication::translate("MusicPlayer", "\346\220\234\347\264\242", nullptr));
         optionsButton->setText(QString());
-        minButton->setText(QCoreApplication::translate("OnlineMusicWidget", "\342\200\224", nullptr));
-        closeButton->setText(QCoreApplication::translate("OnlineMusicWidget", "X", nullptr));
+        minButton->setText(QCoreApplication::translate("MusicPlayer", "\342\200\224", nullptr));
+        closeButton->setText(QCoreApplication::translate("MusicPlayer", "X", nullptr));
         playerGroup->setTitle(QString());
-        titleLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "\346\255\214\346\233\262\345\220\215", nullptr));
-        currentTimeLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "00:00", nullptr));
-        totalTimeLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "00:00", nullptr));
+        titleLabel->setText(QCoreApplication::translate("MusicPlayer", "\346\255\214\346\233\262\345\220\215", nullptr));
+        currentTimeLabel->setText(QCoreApplication::translate("MusicPlayer", "00:00", nullptr));
+        totalTimeLabel->setText(QCoreApplication::translate("MusicPlayer", "00:00", nullptr));
         authorLabel->setText(QString());
         prevButton->setText(QString());
         playButton->setText(QString());
         nextButton->setText(QString());
         volumeButton->setText(QString());
 #if QT_CONFIG(tooltip)
-        localMusicListButton->setToolTip(QCoreApplication::translate("OnlineMusicWidget", "<html><head/><body><p>\346\234\254\345\234\260\346\255\214\346\233\262</p><p><br/></p></body></html>", nullptr));
+        localMusicListButton->setToolTip(QCoreApplication::translate("MusicPlayer", "<html><head/><body><p>\346\234\254\345\234\260\346\255\214\346\233\262</p><p><br/></p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
         localMusicListButton->setText(QString());
-        musicListLabel->setText(QCoreApplication::translate("OnlineMusicWidget", "\346\222\255\346\224\276\345\210\227\350\241\250", nullptr));
+        musicListLabel->setText(QCoreApplication::translate("MusicPlayer", "\346\222\255\346\224\276\345\210\227\350\241\250", nullptr));
         albumCover->setText(QString());
+#if QT_CONFIG(whatsthis)
+        pushButton->setWhatsThis(QCoreApplication::translate("MusicPlayer", "\344\270\212\344\274\240\346\234\254\345\234\260\346\255\214\350\257\215", nullptr));
+#endif // QT_CONFIG(whatsthis)
+        pushButton->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class OnlineMusicWidget: public Ui_OnlineMusicWidget {};
+    class MusicPlayer: public Ui_MusicPlayer {};
 } // namespace Ui
 
 QT_END_NAMESPACE

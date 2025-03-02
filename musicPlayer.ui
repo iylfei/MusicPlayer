@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>OnlineMusicWidget</class>
- <widget class="QWidget" name="OnlineMusicWidget">
+ <class>MusicPlayer</class>
+ <widget class="QWidget" name="MusicPlayer">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -12,6 +12,9 @@
   </property>
   <property name="windowTitle">
    <string>OnlineMusicWidget</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QGroupBox" name="searchGroup">
    <property name="geometry">
@@ -60,6 +63,9 @@ border-radius:5px;
      <font>
       <pointsize>12</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:black;</string>
     </property>
     <property name="text">
      <string/>
@@ -235,39 +241,6 @@ QPushButton#closeButton:pressed {
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QTextBrowser" name="lyric">
-   <property name="geometry">
-    <rect>
-     <x>650</x>
-     <y>130</y>
-     <width>411</width>
-     <height>361</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QScrollArea" name="scrollArea">
-   <property name="geometry">
-    <rect>
-     <x>1040</x>
-     <y>120</y>
-     <width>16</width>
-     <height>371</height>
-    </rect>
-   </property>
-   <property name="widgetResizable">
-    <bool>true</bool>
-   </property>
-   <widget class="QWidget" name="scrollAreaWidgetContents">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>16</width>
-      <height>352</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
   <widget class="QGroupBox" name="playerGroup">
    <property name="geometry">
@@ -626,15 +599,56 @@ border-radius:15px;</string>
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>1030</x>
+     <y>100</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="whatsThis">
+    <string>上传本地歌词</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;
+border:1px solid rgb(255, 255, 255);
+border-radius:8px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="musicPlayer.qrc">
+     <normaloff>:/images/prefix1/images/uploadCover.png</normaloff>:/images/prefix1/images/uploadCover.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="lyric">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>130</y>
+     <width>331</width>
+     <height>361</height>
+    </rect>
+   </property>
+  </widget>
   <zorder>playerGroup</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>searchGroup</zorder>
-  <zorder>lyric</zorder>
-  <zorder>scrollArea</zorder>
   <zorder>localMusicListButton</zorder>
   <zorder>musicListLabel</zorder>
   <zorder>musicList</zorder>
   <zorder>albumCover</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>lyric</zorder>
  </widget>
  <resources>
   <include location="musicPlayer.qrc"/>
