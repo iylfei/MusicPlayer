@@ -1,0 +1,50 @@
+# Qt 特定文件
+*.pro.user
+*.pro.user.*
+*.qmake.stash
+*.moc
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+Makefile*
+*build-*
+debug/
+release/
+x64/
+x86/
+*.exe
+*.dll
+*.lib
+*.a
+*.o
+*.obj
+
+# Qt Creator 特定文件
+*.autosave
+*.qmlproject.user
+*.qmlproject.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc.user
+*.moc.user.*
+*.qmake.cache
+*.qmake.stash
+
+# 编译输出目录
+build/
+out/
+bin/
+obj/
+Debug/
+Release/
+
+# IDE 相关
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
