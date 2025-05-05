@@ -27,13 +27,11 @@ MusicPlayer::MusicPlayer(QWidget *parent)
     ui->volumeSlider->setValue(30);
     audioOutput->setVolume(0.3);
 
-    // 总时长
     connect(player, &QMediaPlayer::durationChanged, this, &MusicPlayer::updateDuration);
 
     // 初始化进度条
     ui->progressSlider->setMinimum(0);
     ui->progressSlider->setValue(0);
-    // 更新进度条
     connect(player, &QMediaPlayer::durationChanged, this, &MusicPlayer::updateDuration);
     connect(player, &QMediaPlayer::positionChanged, this, &MusicPlayer::updateProgress);
     connect(ui->progressSlider, &QSlider::sliderPressed, this, &MusicPlayer::onSliderPressed);
@@ -43,6 +41,7 @@ MusicPlayer::MusicPlayer(QWidget *parent)
     //连接歌词进度
     initLyricStyle();
     connect(player, &QMediaPlayer::positionChanged, this, &MusicPlayer::updateLyric);
+
     // 更新背景
     connect(settingsDialog, &Settings::backgroundChanged, this, [this]() {
         update();
@@ -54,6 +53,7 @@ MusicPlayer::MusicPlayer(QWidget *parent)
 
     // 安装事件过滤器
     qApp->installEventFilter(this);
+
     // 本地歌曲路径
     musicListPath = QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation)
                     + "/LocalMusic/musiclist.json";
@@ -64,6 +64,7 @@ MusicPlayer::MusicPlayer(QWidget *parent)
         dir.mkpath(".");
     }
 
+    //标题滚动
     scrollTimer = new QTimer(this);
     connect(scrollTimer, &QTimer::timeout, this, &MusicPlayer::scrollText);
     scrollTimer->setInterval(SCROLL_INTERVAL);

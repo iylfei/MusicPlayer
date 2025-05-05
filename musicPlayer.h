@@ -92,7 +92,7 @@ private slots:
     //歌词
     void on_pushButton_clicked();
     void updateLyricDisplay();
-    void updateLyric(qint64 position); // 缺少的函数声明
+    void updateLyric(qint64 position);
     void setLyricStyle(const LyricStyle &style);
     void initLyricStyle();
 
@@ -113,7 +113,7 @@ private:
     bool isLocalMusicListVisible = false;
     QPushButton *addButton = nullptr;
     QWidget *container = nullptr;
-    QStandardItemModel *musicModel;  // 播放列表
+    QStandardItemModel *musicModel;
 
     // 文件管理
     void saveMusicList();  // 保存歌曲列表
@@ -136,8 +136,7 @@ private:
     QColor m_textColor = Qt::white;
     void drawAuthorLabel();
 
-    // 窗口拖动
-    QPoint m_mousepoint;
+    // 窗口拖动  
     QPoint movepoint;
     bool ispressed;
 
